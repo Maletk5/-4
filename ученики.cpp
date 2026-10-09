@@ -5,7 +5,10 @@
 #include <numeric>
 #include <iomanip>
 #include <algorithm>
+#include <Windows.h>;
+#pragma execution_character_set("utf-8");
 using namespace std;
+int a = 0;
 struct Student {
     string id; 
     string name;
@@ -38,7 +41,7 @@ void initDefaultData() {
 }
 void manageStudentsMenu() {
     while (true) {
-        cout << "МЕНЮ" "\n"
+        cout << "МЕНЮ студентов" "\n"
             << "1. Добавить студента" "\n"
             << "2. Изменить студента" "\n"
             << "3. Удалить студента" "\n"
@@ -282,4 +285,40 @@ void showGroupStatisticsMenu() {
   }
 
         bool hasTwo = false;
+        int main(){
+            SetConsoleCP(65001);
+            SetConsoleOutputCP(65001);
+            do {
+                cout << "выбор меню" "\n";
+                cout << "0. меню существующих групп их студентов и их оценок" "\n";
+                cout << "1. Меню студентов" "\n";
+                cout << "2. Мнею для управления группами" "\n";
+                cout << "3. Меню для оценки сдудента" "\n";
+                cout << "4. Меню для ср балла" "\n";
+                cout << "5. Меню статистики группы" "\n";
+                cout << "6. выход из программы" "\n";
+                cout << "введите номер меню " "\n";
+                cin >> a;
+                if (a == 0) {
+                    initDefaultData();
+                }
+                if (a == 1) {
+                    manageStudentsMenu();
+                }
+                if (a == 2) {
+                    manageGroupsMenu();
+                }
+                if (a == 3) {
+                    addGradesMenu();
+                }
+                if (a == 4) {
+                    showAverageScoresMenu();
+                }
+                if (a == 5) {
+                    showGroupStatisticsMenu();
+                }
+
+            } while (a != 6);
+
+}
    
